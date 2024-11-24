@@ -7,14 +7,15 @@
 		"test": "jest",
 		"prepare": "husky",
 		"setup-db": "./setup-db.sh local up -d",
-		"get-docker-ip": "docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ",
+		"get-docker-ip": "docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aqf \"name=psql\")",
 		"dev": "nodemon src/server.ts",
 		"lint-staged": "lint-staged",
 		"format": "prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --write --ignore-unknown",
 		"lint": "eslint --quiet --fix",
 		"migrate": "npx prisma migrate dev",
 		"seed": "npx prisma db seed",
-		"studio": "npx prisma studio"
+		"studio": "npx prisma studio",
+		"docker-delete": "docker rm -vf $(docker ps -aqf \"name=psql\")"
 	},
 	"repository": {
 		"type": "git",
