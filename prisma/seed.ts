@@ -63,6 +63,8 @@ async function seeder() {
 		create: {
 			id: 'cm3pr1rkb000008l8fs7icr9g',
 			name: 'Mr Tiddles',
+			picture_url:
+				'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGpMwXI5hOZhVNL9Z1YZfhSgjjY1qEBRJgQ&s',
 			owner_id: user1.id,
 			device_id: device1.id,
 		},
@@ -74,6 +76,8 @@ async function seeder() {
 		create: {
 			id: 'cm3pz1t0v000308jka8bl7x25',
 			name: 'Daisy, Destroy of Life',
+			picture_url:
+				'https://c8.alamy.com/comp/DBTJAD/a-closeup-picture-of-a-cats-face-on-a-white-background-DBTJAD.jpg',
 			owner_id: user1.id,
 			device_id: device2.id,
 		},
