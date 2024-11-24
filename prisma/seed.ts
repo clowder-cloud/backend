@@ -29,11 +29,11 @@ async function seeder() {
 			owner_id: user1.id,
 			uuid: '5804f943-4aaf-432f-83d8-62028827ac57',
 			location_history: [
-				{ lat: -1.445, lon: 53.8075 },
-				{ lat: -1.446, lon: 53.807 },
-				{ lat: -1.447, lon: 53.8065 },
-				{ lat: -1.4485, lon: 53.806 },
-				{ lat: -1.4495, lon: 53.8055 },
+				{ lon: -1.445, lat: 53.8075 },
+				{ lon: -1.446, lat: 53.807 },
+				{ lon: -1.447, lat: 53.8065 },
+				{ lon: -1.4485, lat: 53.806 },
+				{ lon: -1.4495, lat: 53.8055 },
 			],
 		},
 	});
@@ -46,11 +46,11 @@ async function seeder() {
 			owner_id: user1.id,
 			uuid: '36932d18-78a2-4ceb-b979-64a5ed441551',
 			location_history: [
-				{ lat: -1.447, lon: 53.8035 },
-				{ lat: -1.4485, lon: 53.804 },
-				{ lat: -1.449, lon: 53.8045 },
-				{ lat: -1.45, lon: 53.805 },
-				{ lat: -1.451106, lon: 53.806201 },
+				{ lon: -1.447, lat: 53.8035 },
+				{ lon: -1.4485, lat: 53.804 },
+				{ lon: -1.449, lat: 53.8045 },
+				{ lon: -1.45, lat: 53.805 },
+				{ lon: -1.451106, lat: 53.806201 },
 			],
 		},
 	});
