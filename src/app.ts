@@ -1,9 +1,11 @@
 import express, { Express } from 'express';
 import routes from './routes';
 import statusError from './errorHandlers/statusError';
+import cors from 'cors';
 
 const app: Express = express();
 
+app.use(cors());
 app.use(express.json());
 
 Object.entries(routes).forEach(([route, handlers]) => {
