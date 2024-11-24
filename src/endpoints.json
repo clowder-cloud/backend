@@ -38,7 +38,7 @@
 	{
 		"path": "/api/devices/update",
 		"description": "Update information <GPS DEVICE>",
-		"method": "PATCH",
+		"method": "POST",
 		"authentication": "device-uuid",
 		"body": {
 			"id": "string",
