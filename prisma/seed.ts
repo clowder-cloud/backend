@@ -28,6 +28,13 @@ async function seeder() {
 			name: 'Tiddles Collar',
 			owner_id: user1.id,
 			uuid: '5804f943-4aaf-432f-83d8-62028827ac57',
+			location_history: [
+				{ lat: -1.445, lon: 53.8075 },
+				{ lat: -1.446, lon: 53.807 },
+				{ lat: -1.447, lon: 53.8065 },
+				{ lat: -1.4485, lon: 53.806 },
+				{ lat: -1.4495, lon: 53.8055 },
+			],
 		},
 	});
 
@@ -38,6 +45,13 @@ async function seeder() {
 			name: 'A Collar',
 			owner_id: user1.id,
 			uuid: '36932d18-78a2-4ceb-b979-64a5ed441551',
+			location_history: [
+				{ lat: -1.447, lon: 53.8035 },
+				{ lat: -1.4485, lon: 53.804 },
+				{ lat: -1.449, lon: 53.8045 },
+				{ lat: -1.45, lon: 53.805 },
+				{ lat: -1.451106, lon: 53.806201 },
+			],
 		},
 	});
 
