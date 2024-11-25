@@ -28,12 +28,13 @@ async function seeder() {
 			name: 'Tiddles Collar',
 			owner_id: user1.id,
 			uuid: '5804f943-4aaf-432f-83d8-62028827ac57',
+			last_pulse_at: '2024-11-25T16:22:11.108Z',
+			last_location: { lon: -1.445, lat: 53.8075 },
 			location_history: [
-				{ lon: -1.445, lat: 53.8075 },
-				{ lon: -1.446, lat: 53.807 },
-				{ lon: -1.447, lat: 53.8065 },
-				{ lon: -1.4485, lat: 53.806 },
-				{ lon: -1.4495, lat: 53.8055 },
+				{ lon: -1.446, lat: 53.807, timestamp: '2024-11-25T16:15:11.108Z' },
+				{ lon: -1.447, lat: 53.8065, timestamp: '2024-11-25T16:08:11.108Z' },
+				{ lon: -1.4485, lat: 53.806, timestamp: '2024-11-25T16:01:11.108Z' },
+				{ lon: -1.4495, lat: 53.8055, timestamp: '2024-11-25T15:54:11.108Z' },
 			],
 		},
 	});
@@ -45,17 +46,30 @@ async function seeder() {
 			name: 'A Collar',
 			owner_id: user1.id,
 			uuid: '36932d18-78a2-4ceb-b979-64a5ed441551',
+			last_pulse_at: '2024-11-25T16:22:11.108Z',
+			last_location: { lon: -1.447, lat: 53.8035 },
 			location_history: [
-				{ lon: -1.447, lat: 53.8035 },
-				{ lon: -1.4485, lat: 53.804 },
-				{ lon: -1.449, lat: 53.8045 },
-				{ lon: -1.45, lat: 53.805 },
-				{ lon: -1.451106, lat: 53.806201 },
+				{ lon: -1.4485, lat: 53.804, timestamp: '2024-11-25T16:15:11.108Z' },
+				{ lon: -1.449, lat: 53.8045, timestamp: '2024-11-25T16:08:11.108Z' },
+				{ lon: -1.45, lat: 53.805, timestamp: '2024-11-25T16:01:11.108Z' },
+				{
+					lon: -1.451106,
+					lat: 53.806201,
+					timestamp: '2024-11-25T15:54:11.108Z',
+				},
 			],
 		},
 	});
 
-	// cm3pyzthe000108jka5f7hw99
+	await prisma.device.upsert({
+		where: { uuid: 'e062ebb6-4f14-4123-87bc-d31791756107' },
+		update: {},
+		create: {
+			name: 'A Collar',
+			owner_id: user1.id,
+			uuid: 'e062ebb6-4f14-4123-87bc-d31791756107',
+		},
+	});
 
 	await prisma.cat.upsert({
 		where: { id: 'cm3pr1rkb000008l8fs7icr9g' },

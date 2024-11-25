@@ -48,6 +48,7 @@ export async function updateDevice(
 		history.push({
 			lat: currentInformation.last_location.lat,
 			lon: currentInformation.last_location.lon,
+			timestamp: new Date().toISOString(),
 		});
 		// We have previous data. Lets push it to the history before we overwrite
 	}

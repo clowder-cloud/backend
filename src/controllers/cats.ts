@@ -45,11 +45,32 @@ export function updateCat(
 	cats.fetchCatsByUserID(user.id).then((usersCats) => {
 		// ensure that the authenticated user owns the cat
 		const catMatch = usersCats.find((cat) => cat.id === result.body.cat_id);
-		if (!catMatch) return next({ status: 404, message: 'Cat does not exist' });
+		if (!catMatch) throw new Error('no cat found');
 
 		delete result.body.cat_id;
 		cats.updateCat(catMatch.id, result.body).then((updated_cat) => {
 			response.status(200).json({ success: true, data: updated_cat });
 		});
 	});
+}
+
+export async function getLeaderboardWithRange(
+	request: Request,
+	response: Response,
+	next: NextFunction
+) {
+	const validRanges = ['daily', 'weekly', 'monthly', 'yearly', 'all_time'];
+	let { range } = request.params;
+
+	range = range.toLowerCase();
+
+	if (!validRanges.includes(range))
+		return next({
+			status: 400,
+			message: `'${range}' is not a recognized range`,
+		});
+
+	const catsData = await cats.getAllCatsWithRange(range);
+
+	response.status(200).json({ success: true, data: catsData, range: range });
 }

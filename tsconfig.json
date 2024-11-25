@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "es2016",
 		"module": "commonjs",
-		"types": ["jest"],
+		"types": ["jest", "jest-sorted"],
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
