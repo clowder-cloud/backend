@@ -61,3 +61,11 @@ export function updateUser(
 			res.status(500).send({ msg: 'An internal server error occurred' });
 		});
 }
+
+export function getAllUsers(request: Request, response: Response) {
+	users.getAll().then((data) => {
+		response
+			.status(200)
+			.json({ success: true, data: data, count: data.length });
+	});
+}

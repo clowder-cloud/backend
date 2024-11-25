@@ -24,3 +24,15 @@ export function updateUser(username: string, data: object) {
 		data,
 	});
 }
+
+export function getAll() {
+	return extendedClient.user.findMany({
+		select: {
+			username: true,
+			requested_privacy: true,
+			devices: true,
+			cats: true,
+			created_at: true,
+		},
+	});
+}
