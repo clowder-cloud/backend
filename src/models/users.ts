@@ -24,3 +24,11 @@ export function updateUser(username: string, data: object) {
 		data,
 	});
 }
+
+export function createUser(username: string) {
+	return extendedClient.user.create({
+		data: {
+			username: username,
+		},
+	});
+}

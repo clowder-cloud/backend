@@ -2,10 +2,14 @@ import app from '../src/app';
 import request from 'supertest';
 import endpointsJson from '../src/endpoints.json';
 import seeder from '../prisma/seed';
+import { promisify } from 'util';
+import { exec } from 'child_process';
 
 const server = app.listen(6666);
 
-beforeEach(async () => {
+beforeAll(async () => {
+	console.log(`💽 Wiping and re-seeding`);
+	await promisify(exec)('npx prisma migrate reset --force');
 	await seeder();
 });
 
@@ -143,6 +147,25 @@ describe('🧪 Express Application', () => {
 					.set('authorization', 'user1')
 					.send(data)
 					.expect(400);
+			});
+		});
+
+		describe('POST /api/users/create', () => {
+			it('201: should create a new user', () => {
+				const body = {
+					username: 'jeepies',
+				};
+				return request(app)
+					.post('/api/users/create')
+					.send(body)
+					.expect(201)
+					.then(({ body: { success, data } }) => {
+						expect(success).toBe(true);
+						expect(data).toMatchObject({
+							username: 'jeepies',
+							requested_privacy: 'PUBLIC',
+						});
+					});
 			});
 		});
 	});

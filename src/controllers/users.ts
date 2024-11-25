@@ -61,3 +61,25 @@ export function updateUser(
 			res.status(500).send({ msg: 'An internal server error occurred' });
 		});
 }
+
+export function createUser(
+	request: Request,
+	response: Response,
+	next: NextFunction
+) {
+	const schema = {
+		username: 'string',
+	};
+	const payload = request.body;
+	const result = validator(payload, schema);
+	if (!result.success) return next({ status: 400, message: result.errors });
+
+	users
+		.createUser(result.body.username)
+		.then((data) => {
+			response.status(201).json({ success: true, data: data });
+		})
+		.catch(() =>
+			next({ status: 500, message: 'An internal server error occurred' })
+		);
+}
