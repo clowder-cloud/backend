@@ -54,6 +54,9 @@ This README assumes you have Docker installed. If you do not, please read [this]
 
 #### Creating the environment
 
+> [!WARNING]  
+> If you are using Docker Desktop (primarily for Windows and MacOS), you should change `HOST` to `localhost` and `PORT` to `54320`
+
 1. Create a new `.env` file at the root of the project
 2. Refer to the `example.env` file, replacing values where required
    1. The `DATABASE_URL` will be constructed of values from `docker-compose.local.yaml` and the output of previous steps.
