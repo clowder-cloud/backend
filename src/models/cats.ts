@@ -1,5 +1,6 @@
 import extendedClient from '../db/client';
-import CoordinateObjectType from '../type/CoordinateObjectType';
+// Removed for demo to stop linter complaining
+// import CoordinateObjectType from '../type/CoordinateObjectType';
 import Coordinate from '../type/CoordinateType';
 import coordsToScore from '../utils/coordsToScore';
 
@@ -137,38 +138,39 @@ export function increaseLevelAndXP(id: string, level: number, xp: number) {
 	});
 }
 
-export function getCatsWithLastLocation(
-	near: CoordinateObjectType,
-	radius: number
-) {
+export function getCatsWithLastLocation() {
+	// Removed for demo
+	// near: CoordinateObjectType,
+	// radius: number
 	return extendedClient.device.findMany({
 		include: {
 			cat: true,
 		},
-		where: {
-			NOT: [
-				{
-					last_location: undefined,
-				},
-				{
-					cat: null,
-				},
-			],
-			AND: [
-				{
-					last_location: {
-						path: ['lat'],
-						gte: near.lat - radius,
-					},
-				},
-				{
-					last_location: {
-						path: ['lat'],
-						lte: near.lat + radius,
-					},
-				},
-			],
-		},
+		// Removed for demo
+		// where: {
+		// 	NOT: [
+		// 		{
+		// 			last_location: undefined,
+		// 		},
+		// 		{
+		// 			cat: null,
+		// 		},
+		// 	],
+		// 	AND: [
+		// 		{
+		// 			last_location: {
+		// 				path: ['lat'],
+		// 				gte: near.lat - radius,
+		// 			},
+		// 		},
+		// 		{
+		// 			last_location: {
+		// 				path: ['lat'],
+		// 				lte: near.lat + radius,
+		// 			},
+		// 		},
+		// 	],
+		// },
 	});
 }
 

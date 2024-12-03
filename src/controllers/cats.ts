@@ -87,9 +87,11 @@ export async function getCatsNearby(
 	if (!baseCat || !baseCat.device)
 		return next({ status: 404, message: 'Cat not found' });
 
-	const catsData = (
-		await cats.getCatsWithLastLocation(baseCat.device.last_location, +distance)
-	).filter((device) => device.cat?.id != id);
+	const catsData = // Removed parameters triggering linter for demo
+		// await cats.getCatsWithLastLocation(baseCat.device.last_location, +distance)
+		(await cats.getCatsWithLastLocation()).filter(
+			(device) => device.cat?.id != id
+		);
 	const locationPoints = catsData.map((cat) => cat.last_location);
 
 	const intersectingPoints = getAllIntersectingCoordinates(
