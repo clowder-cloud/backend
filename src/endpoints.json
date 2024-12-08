@@ -1,27 +1,24 @@
 [
 	{
-		"path": "/api",
-		"description": "Index of API",
-		"method": "GET",
-		"authentication": "none",
-		"result": {
-			"success": true
-		}
-	},
-	{
-		"path": "/api/endpoints",
+		"path": "/api/",
 		"description": "List all endpoints",
 		"method": "GET",
 		"authentication": "none",
-		"result": {
+		"exampleResponse": {
 			"success": true,
 			"data": {
-				"/api": {
-					"description": "Index of API",
-					"method": "GET",
-					"authentication": "none",
-					"result": { "success": true }
-				}
+				"endpoints": [
+					{
+						"path": "/api/devices/create",
+						"description": "Register a new device",
+						"method": "POST",
+						"authentication": "username",
+						"body": {},
+						"exampleResponse": {
+							"success": true
+						}
+					}
+				]
 			}
 		}
 	},
@@ -31,28 +28,49 @@
 		"method": "POST",
 		"authentication": "username",
 		"body": {},
-		"result": {
-			"success": true
+		"exampleResponse": {
+			"success": true,
+			"data": {
+				"id": "cm4ep553p0001rkiz9s1mgb64",
+				"name": "GPS Device",
+				"uuid": "c12b3b4e-125f-4f8e-a3cd-bba33b63ae1a",
+				"owner_id": "cm3op7iwu0000jrcqa60tc9kv",
+				"last_pulse_at": null,
+				"last_location": {},
+				"location_history": [],
+				"updated_at": "2024-12-07T21:38:16.213Z",
+				"created_at": "2024-12-07T21:38:16.213Z"
+			}
 		}
 	},
 	{
 		"path": "/api/devices/update",
 		"description": "Update information <GPS DEVICE>",
-		"method": "PATCH",
-		"authentication": "device-uuid",
+		"method": "POST",
+		"authentication": "none",
 		"body": {
 			"id": "string",
 			"lat": "number",
 			"lon": "number"
 		},
-		"result": {}
+		"exampleResponse": "204 - No Content"
+	},
+	{
+		"path": "/api/devices/delete",
+		"description": "Delete a device",
+		"method": "DELETE",
+		"authentication": "username",
+		"body": {
+			"device_uuid": "5804f943-4aaf-432f-83d8-62028827ac57"
+		},
+		"exampleResponse": "204 - No Content"
 	},
 	{
 		"path": "/api/users/:id/devices",
 		"description": "List all of a users devices",
 		"method": "GET",
 		"authentication": "none",
-		"result": {
+		"exampleResponse": {
 			"success": true,
 			"data": [
 				{
@@ -70,25 +88,89 @@
 		}
 	},
 	{
-		"path": "/api/devices/delete",
-		"description": "Delete a device",
-		"method": "DELETE",
-		"authentication": "username",
-		"result": {}
+		"path": "/api/users/",
+		"description": "Fetch all users",
+		"method": "GET",
+		"authentication": "none",
+		"exampleResponse": {
+			"success": true,
+			"data": [
+				{
+					"username": "user2",
+					"requested_privacy": "PUBLIC",
+					"devices": [
+						{
+							"id": "cm4a07hsl0003wnalvfrzrczj",
+							"name": "A Collar",
+							"uuid": "36932d18-78a2-4ceb-b979-64a5ed441551",
+							"owner_id": "cm3op7iww0001jrcqpq3qxx6i",
+							"last_pulse_at": "2024-11-25T16:22:11.108Z",
+							"last_location": {
+								"lat": 53.8035,
+								"lon": -1.447
+							},
+							"location_history": [
+								{
+									"lat": 53.804,
+									"lon": -1.4485,
+									"timestamp": "2024-11-25T16:15:11.108Z"
+								},
+								{
+									"lat": 53.8045,
+									"lon": -1.449,
+									"timestamp": "2024-11-25T16:08:11.108Z"
+								},
+								{
+									"lat": 53.805,
+									"lon": -1.45,
+									"timestamp": "2024-11-25T16:01:11.108Z"
+								},
+								{
+									"lat": 53.806201,
+									"lon": -1.451106,
+									"timestamp": "2024-11-25T15:54:11.108Z"
+								}
+							],
+							"updated_at": "2024-12-06T18:28:29.815Z",
+							"created_at": "2024-12-04T14:49:10.869Z"
+						}
+					],
+					"cats": [
+						{
+							"id": "cm3pz1t0v000308jka8bl7x25",
+							"name": "Daisy, Eater of Worlds",
+							"description": null,
+							"picture_url": "https://c8.alamy.com/comp/DBTJAD/a-closeup-picture-of-a-cats-face-on-a-white-background-DBTJAD.jpg",
+							"device_id": "cm4a07hsl0003wnalvfrzrczj",
+							"owner_id": "cm3op7iww0001jrcqpq3qxx6i",
+							"updated_at": "2024-12-06T18:31:06.913Z",
+							"created_at": "2024-12-04T14:49:10.883Z",
+							"battleProfileId": null
+						}
+					],
+					"created_at": "2024-12-04T14:49:10.858Z"
+				}
+			],
+			"count": 3
+		}
 	},
 	{
-		"path": "/api/cats/create",
-		"description": "Register a new cat",
+		"path": "/api/users/",
+		"description": "Create a new user",
 		"method": "POST",
-		"authentication": "username",
+		"authentication": "none",
 		"body": {
-			"name": "string, optional",
-			"description": "string, optional",
-			"picture_url": "string, optional"
+			"username": "John Smith 123"
 		},
-		"result": {
+		"exampleResponse": {
 			"success": true,
-			"data": {}
+			"data": {
+				"id": "cm4epu1a30002rkizmhrbi1ff",
+				"username": "John Smith 123",
+				"requested_privacy": "PUBLIC",
+				"updated_at": "2024-12-07T21:57:37.634Z",
+				"created_at": "2024-12-07T21:57:37.634Z"
+			}
 		}
 	},
 	{
@@ -96,21 +178,89 @@
 		"description": "List all of a users cats",
 		"method": "GET",
 		"authentication": "none",
-		"result": {
+		"exampleResponse": {
 			"success": true,
 			"data": [
 				{
-					"id": "cm3ptn1mf0005flja3l1pl70b",
-					"name": "Cat",
-					"description": "Meow meow. Meow meow? Meow!",
-					"picture_url": "https://c8.alamy.com/comp/DBTJAD/a-closeup-picture-of-a-cats-face-on-a-white-background-DBTJAD.jpg",
+					"id": "cm3pr1rkb000008l8fs7icr9g",
+					"name": "Mr Tiddles",
+					"description": null,
+					"picture_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWGpMwXI5hOZhVNL9Z1YZfhSgjjY1qEBRJgQ&s",
 					"device_id": null,
 					"owner_id": "cm3op7iwu0000jrcqa60tc9kv",
-					"updated_at": "2024-11-20T11:49:55.576Z",
-					"created_at": "2024-11-20T11:49:55.576Z",
-					"deleted_at": null
+					"updated_at": "2024-12-04T14:49:10.877Z",
+					"created_at": "2024-12-04T14:49:10.877Z",
+					"battleProfileId": null,
+					"battle_profile": {
+						"id": "cm3yd7wfc000108i6ef3w8hrl",
+						"level": 815,
+						"xp": 820,
+						"wins": 0,
+						"losses": 0,
+						"cat_id": "cm3pr1rkb000008l8fs7icr9g"
+					}
 				}
 			]
+		}
+	},
+	{
+		"path": "/api/users/settings",
+		"description": "Fetch a user's settings",
+		"method": "GET",
+		"authentication": "username",
+		"exampleResponse": {
+			"sucess": true,
+			"data": {
+				"id": "cm3op7iwu0000jrcqa60tc9kv",
+				"username": "user1",
+				"requested_privacy": "PRIVATE",
+				"updated_at": "2024-12-07T21:50:47.568Z",
+				"created_at": "2024-12-04T14:49:10.848Z"
+			}
+		}
+	},
+	{
+		"path": "/api/users/settings",
+		"description": "Update a user's settings",
+		"method": "PATCH",
+		"authentication": "username",
+		"body": {
+			"requested_privacy": "PRIVATE"
+		},
+		"exampleResponse": {
+			"sucess": true,
+			"data": {
+				"id": "cm3op7iwu0000jrcqa60tc9kv",
+				"username": "user1",
+				"requested_privacy": "PRIVATE",
+				"updated_at": "2024-12-07T21:50:47.568Z",
+				"created_at": "2024-12-04T14:49:10.848Z"
+			}
+		}
+	},
+	{
+		"path": "/api/cats/create",
+		"description": "Register a new cat",
+		"method": "POST",
+		"authentication": "username",
+		"body": {
+			"name": "Catty Cat McCatFace",
+			"description": "A good kitty.",
+			"picture_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+		},
+		"exampleResponse": {
+			"success": true,
+			"data": {
+				"id": "cm4fjesok0001xntyd0rsa616",
+				"name": "Catty Cat McCatFace",
+				"description": "A good kitty.",
+				"picture_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg",
+				"device_id": null,
+				"owner_id": "cm3op7iwu0000jrcqa60tc9kv",
+				"updated_at": "2024-12-08T11:45:35.154Z",
+				"created_at": "2024-12-08T11:45:35.154Z",
+				"battleProfileId": null
+			}
 		}
 	},
 	{
@@ -119,24 +269,96 @@
 		"method": "PATCH",
 		"authentication": "username",
 		"body": {
-			"cat_id": "string",
-			"name": "string, optional",
-			"description": "string, optional",
-			"picture_url": "string, optional"
+			"cat_id": "cm4fjesok0001xntyd0rsa616",
+			"name": "Catty Cat McCatFace",
+			"description": "A good kitty.",
+			"picture_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
 		},
-		"result": {
+		"exampleResponse": {
 			"success": true,
 			"data": {
-				"id": "cm3pz1t0v000308jka8bl7x25",
-				"name": "Daisy, Eater of Worlds",
-				"description": "Meow meow. Meow meow? Meow!",
-				"picture_url": "https://c8.alamy.com/comp/DBTJAD/a-closeup-picture-of-a-cats-face-on-a-white-background-DBTJAD.jpg",
-				"device_id": "cm3pz39ec0003110jpvg6mya6",
+				"id": "cm4fjesok0001xntyd0rsa616",
+				"name": "Catty Cat McCatFace",
+				"description": "A good kitty.",
+				"picture_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg",
+				"device_id": null,
 				"owner_id": "cm3op7iwu0000jrcqa60tc9kv",
-				"updated_at": "2024-11-20T14:31:14.136Z",
-				"created_at": "2024-11-20T14:22:30.232Z",
-				"deleted_at": null
+				"updated_at": "2024-12-08T11:47:42.125Z",
+				"created_at": "2024-12-08T11:45:35.154Z",
+				"battleProfileId": null
 			}
 		}
+	},
+	{
+		"path": "/api/cats/leaderboard/:range",
+		"description": "Fetch the leadboard for a time range.",
+		"method": "GET",
+		"authentication": "username",
+		"validParameters": {
+			"range": ["daily", "weekly", "monthly", "yearly", "all_time"]
+		},
+		"exampleResponse": {
+			"success": true,
+			"data": [
+				{
+					"id": "cm4a07hsl0003wnalvfrzrczj",
+					"name": "A Collar",
+					"uuid": "36932d18-78a2-4ceb-b979-64a5ed441551",
+					"owner_id": "cm3op7iww0001jrcqpq3qxx6i",
+					"last_pulse_at": "2024-11-25T16:22:11.108Z",
+					"last_location": {
+						"lat": 53.8035,
+						"lon": -1.447
+					},
+					"location_history": [
+						{
+							"lat": 53.804,
+							"lon": -1.4485,
+							"timestamp": "2024-11-25T16:15:11.108Z"
+						},
+						{
+							"lat": 53.8045,
+							"lon": -1.449,
+							"timestamp": "2024-11-25T16:08:11.108Z"
+						},
+						{
+							"lat": 53.805,
+							"lon": -1.45,
+							"timestamp": "2024-11-25T16:01:11.108Z"
+						},
+						{
+							"lat": 53.806201,
+							"lon": -1.451106,
+							"timestamp": "2024-11-25T15:54:11.108Z"
+						}
+					],
+					"updated_at": "2024-12-06T18:28:29.815Z",
+					"created_at": "2024-12-04T14:49:10.869Z",
+					"cat": {
+						"id": "cm3pz1t0v000308jka8bl7x25",
+						"name": "Daisy, Eater of Worlds",
+						"description": null,
+						"picture_url": "https://c8.alamy.com/comp/DBTJAD/a-closeup-picture-of-a-cats-face-on-a-white-background-DBTJAD.jpg",
+						"device_id": "cm4a07hsl0003wnalvfrzrczj",
+						"owner_id": "cm3op7iww0001jrcqpq3qxx6i",
+						"updated_at": "2024-12-06T18:31:06.913Z",
+						"created_at": "2024-12-04T14:49:10.883Z",
+						"battleProfileId": null
+					},
+					"score": 0
+				}
+			],
+			"range": "weekly"
+		}
+	},
+	{
+		"path": "/api/cats/nearby/:id/:distance",
+		"description": "Fetch all cats within a certain distance of a cat.",
+		"method": "GET",
+		"authentication": "username",
+		"validParameters": {
+			"distance": "Number"
+		},
+		"exampleResponse": "TBD"
 	}
 ]
