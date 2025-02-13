@@ -26,6 +26,7 @@ describe('🧪 Express Application', () => {
 				.then(({ body }) => {
 					expect(body).toEqual({
 						success: true,
+						data: expect.any(Object),
 					});
 				});
 		});
