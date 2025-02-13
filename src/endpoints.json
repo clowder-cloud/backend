@@ -1,6 +1,5 @@
-[
-	{
-		"path": "/api/",
+{
+	"/api": {
 		"description": "List all endpoints",
 		"method": "GET",
 		"authentication": "none",
@@ -22,8 +21,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/devices/create",
+	"/api/devices/create": {
 		"description": "Register a new device",
 		"method": "POST",
 		"authentication": "username",
@@ -43,8 +41,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/devices/update",
+	"/api/devices/update": {
 		"description": "Update information <GPS DEVICE>",
 		"method": "POST",
 		"authentication": "none",
@@ -55,8 +52,7 @@
 		},
 		"exampleResponse": "204 - No Content"
 	},
-	{
-		"path": "/api/devices/delete",
+	"/api/devices/delete": {
 		"description": "Delete a device",
 		"method": "DELETE",
 		"authentication": "username",
@@ -65,8 +61,7 @@
 		},
 		"exampleResponse": "204 - No Content"
 	},
-	{
-		"path": "/api/users/:id/devices",
+	"/api/users/:id/devices": {
 		"description": "List all of a users devices",
 		"method": "GET",
 		"authentication": "none",
@@ -87,8 +82,7 @@
 			]
 		}
 	},
-	{
-		"path": "/api/users/",
+	"/api/users/": {
 		"description": "Fetch all users",
 		"method": "GET",
 		"authentication": "none",
@@ -154,8 +148,7 @@
 			"count": 3
 		}
 	},
-	{
-		"path": "/api/users/",
+	"/api/users/": {
 		"description": "Create a new user",
 		"method": "POST",
 		"authentication": "none",
@@ -173,8 +166,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/users/:id/cats",
+	"/api/users/:id/cats": {
 		"description": "List all of a users cats",
 		"method": "GET",
 		"authentication": "none",
@@ -203,8 +195,7 @@
 			]
 		}
 	},
-	{
-		"path": "/api/users/settings",
+	"/api/users/settings": {
 		"description": "Fetch a user's settings",
 		"method": "GET",
 		"authentication": "username",
@@ -219,8 +210,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/users/settings",
+	"/api/users/settings": {
 		"description": "Update a user's settings",
 		"method": "PATCH",
 		"authentication": "username",
@@ -238,8 +228,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/cats/create",
+	"/api/cats/create": {
 		"description": "Register a new cat",
 		"method": "POST",
 		"authentication": "username",
@@ -263,8 +252,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/cats/update",
+	"/api/cats/update": {
 		"description": "Update a cats social information",
 		"method": "PATCH",
 		"authentication": "username",
@@ -289,8 +277,7 @@
 			}
 		}
 	},
-	{
-		"path": "/api/cats/leaderboard/:range",
+	"/api/cats/leaderboard/:range": {
 		"description": "Fetch the leadboard for a time range.",
 		"method": "GET",
 		"authentication": "username",
@@ -351,8 +338,7 @@
 			"range": "weekly"
 		}
 	},
-	{
-		"path": "/api/cats/nearby/:id/:distance",
+	"/api/cats/nearby/:id/:distance": {
 		"description": "Fetch all cats within a certain distance of a cat.",
 		"method": "GET",
 		"authentication": "username",
@@ -361,4 +347,4 @@
 		},
 		"exampleResponse": "TBD"
 	}
-]
+}
