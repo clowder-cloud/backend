@@ -6,15 +6,18 @@
 		"exampleResponse": {
 			"success": true,
 			"data": {
-				"/api/devices/create": {
-					"description": "Register a new device",
-					"method": "POST",
-					"authentication": "username",
-					"body": {},
-					"exampleResponse": {
-						"success": true
+				"endpoints": [
+					{
+						"path": "/api/devices/create",
+						"description": "Register a new device",
+						"method": "POST",
+						"authentication": "username",
+						"body": {},
+						"exampleResponse": {
+							"success": true
+						}
 					}
-				}
+				]
 			}
 		}
 	},
