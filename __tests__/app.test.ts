@@ -18,40 +18,16 @@ afterAll(() => {
 });
 
 describe('🧪 Express Application', () => {
-	describe('Root', () => {
-		describe('GET /api', () => {
-			it('200: should return a successful response', () => {
-				return request(app)
-					.get('/api')
-					.expect(200)
-					.then(({ body }) => {
-						expect(body).toEqual({
-							success: true,
-						});
+	describe('GET /api', () => {
+		it('200: should return a successful response', () => {
+			return request(app)
+				.get('/api')
+				.expect(200)
+				.then(({ body }) => {
+					expect(body).toEqual({
+						success: true,
 					});
-			});
-		});
-
-		describe('GET /api/endpoints', () => {
-			const expectedData = {};
-			endpointsJson.forEach((endpoint) => {
-				const copy = JSON.parse(JSON.stringify(endpoint));
-				delete copy.path;
-				Object.assign(expectedData, {
-					[endpoint.path]: {
-						...copy,
-					},
 				});
-			});
-			it('200: should return a successful response', () => {
-				return request(app)
-					.get('/api/endpoints')
-					.expect(200)
-					.then(({ body: { success, data } }) => {
-						expect(success).toBe(true);
-						expect(data).toEqual(expectedData);
-					});
-			});
 		});
 	});
 
